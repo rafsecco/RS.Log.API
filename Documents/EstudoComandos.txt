@@ -1,8 +1,8 @@
 ##########	Docker	################################################################################################################
 
-docker-compose -p rs_log_solution build
-docker-compose -p rs_log_solution up -d
-docker-compose -p rs_log_solution down
+docker-compose -p rs_logging build
+docker-compose -p rs_logging up -d
+docker-compose -p rs_logging down
 
 
 #docker build --tag my-prepopulated-image .
@@ -19,8 +19,7 @@ Ir para a pasta do projeto de Infra
 	dotnet ef database update --startup-project ..\RS.Logging.API\
 
 	dotnet ef migrations remove --startup-project ..\RS.Logging.API\
-
-
+	dotnet ef migrations script -s ..\RS.Logging.API\ -c RSLoggingDbContext -i --output "../../docker/mariadb/temp/setup.sql"
 
 EntityFrameWork
 dotnet ef migrations add InitialCreate --startup-project ..\RS.Logging.API\ -o .\Database\Migrations

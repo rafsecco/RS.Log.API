@@ -5,23 +5,26 @@ Desenvolver uma API para registrar os logs de varios projetos
 		Salvar o Log
 	-PesquisarLog()
 		Pesquisa com paginação
+	-GravarLogProcesso()
+	-PesquisarLogProcesso()
 
 -Database
 	-TB_Log
 		-id_Log			BigInt	PK
 		-ie_LogLevel	Int
-		-dt_CreatedAt	DateTime
+		-dt_CreatedAt	DateTime	IDX
 		-ds_Message		String[255]
 		-ds_StackTrace	String[max]
 
 	-TB_LogProcess
 		-id_LogProcess	BigInt	PK
-		-cd_Process		Int
-		-dt_CreatedAt	DateTime
+		-id_Process		Int 		IDX
+		-dt_CreatedAt	DateTime	IDX
+		-nm_Process		String[255]
 
 	-TB_LogProcessDetail
 		-id_LogProcessDetail	BigInt	PK
-		-cd_LogProcess			Int 	FK 	IDX
+		-cd_LogProcess			BigInt 	FK 	IDX
 		-ie_LogLevel			Int
 		-dt_CreatedAt			DateTime 	IDX
 		-ds_Message				String[255]
