@@ -16,9 +16,9 @@ docker-compose -p rs_logging down
 
 Ir para a pasta do projeto de Infra
 	dotnet ef migrations add InitialCreate --startup-project ..\RS.Logging.API\
-	dotnet ef database update --startup-project ..\RS.Logging.API\
+	dotnet ef database update -s ..\RS.Logging.API\
 
-	dotnet ef migrations remove --startup-project ..\RS.Logging.API\
+	dotnet ef migrations remove -s ..\RS.Logging.API\
 	dotnet ef migrations script -s ..\RS.Logging.API\ -c RSLoggingDbContext -i --output "../../docker/mariadb/temp/setup.sql"
 
 EntityFrameWork
